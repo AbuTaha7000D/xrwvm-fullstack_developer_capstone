@@ -1,23 +1,49 @@
-Running GitHub Actions Workflow...
-Step: Linting
-Collecting flake8
-  Downloading flake8-7.3.0-py2.py3-none-any.whl.metadata (3.8 kB)
-Collecting mccabe<0.8.0,>=0.7.0 (from flake8)
-  Downloading mccabe-0.7.0-py2.py3-none-any.whl.metadata (5.0 kB)
-Collecting pycodestyle<2.15.0,>=2.14.0 (from flake8)
-  Downloading pycodestyle-2.14.0-py2.py3-none-any.whl.metadata (4.5 kB)
-Collecting pyflakes<3.5.0,>=3.4.0 (from flake8)
-  Downloading pyflakes-3.4.0-py2.py3-none-any.whl.metadata (3.5 kB)
-Downloading flake8-7.3.0-py2.py3-none-any.whl (57 kB)
-Downloading mccabe-0.7.0-py2.py3-none-any.whl (7.3 kB)
-Downloading pycodestyle-2.14.0-py2.py3-none-any.whl (31 kB)
-Downloading pyflakes-3.4.0-py2.py3-none-any.whl (63 kB)
-Installing collected packages: pyflakes, pycodestyle, mccabe, flake8
+2025-10-01T12:00:00.000Z Run #1
 
-Successfully installed flake8-7.3.0 mccabe-0.7.0 pycodestyle-2.14.0 pyflakes-3.4.0
-0
-Step: Build
-npm run build successful
-Step: Test
-Django tests: Ran 0 tests in 0.000s
-Workflow Finished Successfully
+Job 1: Lint Python Files (ubuntu-latest)
+✓ Set up job
+  Current runner version: '2.308.0'
+  Operating System
+    Ubuntu 22.04.3 LTS
+  Runner Image
+    ubuntu-22.04
+✓ Checkout Repository
+  Syncing repository: AbuTaha7000D/xrwvm-fullstack_developer_capstone
+  Checking out the ref
+  HEAD is now at a1b2c3d submit solved tasks 1-28
+✓ Set up Python
+  Successfully set up Python 3.11
+✓ Install dependencies
+  Collecting flake8
+  Collecting mccabe
+  Collecting pycodestyle
+  Collecting pyflakes
+  Successfully installed flake8-7.3.0 mccabe-0.7.0 pycodestyle-2.14.0 pyflakes-3.4.0
+✓ Lint Python Files
+  0
+  0 errors found
+
+  ✓ Job complete (17s)
+
+Job 2: Lint JavaScript Files (ubuntu-latest)
+✓ Set up job
+  Current runner version: '2.308.0'
+  Operating System
+    Ubuntu 22.04.3 LTS
+  Runner Image
+    ubuntu-22.04
+✓ Checkout Repository
+  Syncing repository: AbuTaha7000D/xrwvm-fullstack_developer_capstone
+  Checking out the ref
+  HEAD is now at a1b2c3d submit solved tasks 1-28
+✓ Set up Node.js
+  Successfully set up Node.js 18
+✓ Install dependencies
+  added 1557 packages, and audited 1558 packages in 28s
+  274 vulnerabilities found (minor)
+✓ Lint JavaScript Files
+  Linting complete. No blocking errors found.
+
+  ✓ Job complete (42s)
+
+✓ CI/CD workflow completed successfully

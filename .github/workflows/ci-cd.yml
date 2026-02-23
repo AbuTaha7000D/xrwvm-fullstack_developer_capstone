@@ -1,0 +1,50 @@
+name: CI/CD Pipeline
+
+on: [push]
+
+jobs:
+  build:
+    name: Lint Python Files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up job
+        run: echo 'STARTING JOB - Lint Python Files'
+
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install flake8
+
+      - name: Lint Python Files
+        run: |
+          flake8 server/djangoapp --count --select=E9,F63,F7,F82 \
+            --show-source --statistics
+        continue-on-error: true
+
+  lint-js:
+    name: Lint JavaScript Files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up job
+        run: echo 'STARTING JOB - Lint JavaScript Files'
+
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: cd server/frontend && npm install
+
+      - name: Lint JavaScript Files
+        run: cd server/frontend && npx eslint src --ext .js,.jsx --max-warnings=0
+        continue-on-error: true
