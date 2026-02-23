@@ -11,14 +11,12 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 # - Description
 # - Any other fields you would like to include in car make model
 # - __str__ method to print a car make object
-
 class CarMake(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=100)
     description = models.TextField()
 
     def __str__(self):
         return self.name
-
 
 # <HINT> Create a Car Model model `class CarModel(models.Model):`:
 # - Many-To-One relationship to Car Make model (One Car Make has many
@@ -30,21 +28,28 @@ class CarMake(models.Model):
 # - Any other fields you would like to include in car model
 # - __str__ method to print a car make object
 
-class CarModel(models.Model):
-    SEDAN = 'Sedan'
-    SUV = 'SUV'
-    WAGON = 'Wagon'
-    TYPE_CHOICES = [
-        (SEDAN, 'Sedan'),
-        (SUV, 'SUV'),
-        (WAGON, 'Wagon'),
-    ]
 
-    car_make = models.ForeignKey(CarMake, on_delete=models.CASCADE)  # Many-To-One relationship to CarMake
-    name = models.CharField(max_length=50)  # Name of the car model
-    type = models.CharField(max_length=10, choices=TYPE_CHOICES)  # Type with choices
-    year = models.IntegerField(validators=[MinValueValidator(2015), MaxValueValidator(2023)])  # Year with validation
-    dealer_id = models.IntegerField()  # Dealer ID for associating with a specific dealer
+class CarModel(models.Model):
+    car_make = models.ForeignKey(CarMake, on_delete=models.CASCADE)
+    name = models.CharField(max_length=50)
+    CAR_TYPES = [
+        ('SEDAN', 'Sedan'),
+        ('SUV', 'SUV'),
+        ('WAGON', 'Wagon'),
+        ('HATCHBACK', 'Hatchback'),
+        ('COUPE', 'Coupe'),
+        ('MINIVAN', 'Minivan'),
+        ('CONVERTIBLE', 'Convertible'),
+        ('PICKUP', 'Pickup'),
+    ]
+    type = models.CharField(max_length=20, choices=CAR_TYPES, default='SUV')
+    year = models.IntegerField(
+        default=2023,
+        validators=[
+            MaxValueValidator(2025),
+            MinValueValidator(2015),
+        ]
+    )
 
     def __str__(self):
-        return f"{self.car_make.name} {self.name} ({self.year})"
+        return self.name
