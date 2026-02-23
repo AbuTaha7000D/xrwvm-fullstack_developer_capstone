@@ -1,0 +1,2 @@
+curl -b cookies.txt -s -X POST http://localhost:8000/djangoapp/logout/ -H "Content-Type: application/json"
+{"success": true, "message": "Logged out successfully"}

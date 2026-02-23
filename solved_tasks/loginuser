@@ -1,0 +1,2 @@
+curl -c cookies.txt -s -X POST http://localhost:8000/djangoapp/login -k -d '{"userName":"root","password":"root123"}' -H "Content-Type: application/json"
+{"userName": "root", "status": "Authenticated"}

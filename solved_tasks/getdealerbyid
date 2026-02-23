@@ -1,0 +1,2 @@
+curl -s http://localhost:8000/djangoapp/dealer/1
+{"status": 200, "dealer": "Can't find tool for ripochesierr"}
